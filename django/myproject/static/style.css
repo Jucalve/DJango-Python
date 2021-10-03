@@ -1,4 +1,10 @@
 /*To use static folder must change in myproyect/settings.py STATIFILES_DIRS=(os.path.join(BASE_DIR, 'static'),)*/
+
+
 h1{
+    font-family: 'Ephesis', cursive;
     color: red
+}
+h2{
+    color: blueviolet
 }
