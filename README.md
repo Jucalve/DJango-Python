@@ -1,2 +1,2 @@
-# DJango-Python
- Using Dango and Postrgresql
+# Django-Python
+ Django with posgresql

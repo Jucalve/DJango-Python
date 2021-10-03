@@ -1,0 +1,16 @@
+{% load static  %} <! Let's use static>
+
+<link rel="stylesheet" href="{% static 'style.css' %}"> <! {%to use static%}>
+
+<h1>
+    Helooow {{name}} :D <br> <! And here you recive the variables >
+    -{{age}} <br>
+    -{{comment}} <br>
+</h1>
+<img src="https://po.ta.to/potato.jpg"/> <br>
+<h1>Say something</h1> <br>
+<form method="POST" action="something"> <! If you use post then DJango needs CSRF token>
+    {% csrf_token %}                    <! This line resolves CSRF error >
+    <textarea name="text" rows="25" cols="100"></textarea>
+    <input type="submit"/>
+</form>
