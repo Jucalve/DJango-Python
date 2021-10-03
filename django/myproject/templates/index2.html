@@ -1,21 +1,21 @@
-{% load static  %} <! Let's use static>
+{% load static  %} <!-- Let's use static-->
 <!DOCTYPE html>
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{% static 'style.css' %}"> <! to use static use {% >
+        <link rel="stylesheet" href="{% static 'style.css' %}"> <!-- to use static use {% -->
     </head>
     <body>
         
         <h1>
-            Helooow {{name}} :D <br> <! And here you recive the variables from viewe.py>
+            Helooow {{name}} :D <br> <!-- And here you recive the variables from viewe.py-->
             -{{age}} <br>
             -{{comment}} <br>
         </h1>
         <img src="https://po.ta.to/potato.jpg" width="300cm"/> <br>
         <h2>Say something</h2> <br>
-        <form method="POST" action="something"> <! If you use post then DJango needs CSRF token>
-            {% csrf_token %}                    <! This line resolves CSRF error >
+        <form method="POST" action="something"> <!-- If you use post then DJango needs CSRF token-->
+            {% csrf_token %}                    <!-- This line resolves CSRF error -->
             <textarea name="text" rows="25" cols="100"></textarea>
             <input type="submit"/>
         </form>
