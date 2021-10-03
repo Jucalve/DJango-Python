@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myapp' #Adds myapp into the main project (need if you want to use DB)
+            #for DB you need to migrate so in commandline /.../myproject
+                #python manage.py makemigrations (Saves changes in models.py)
+                #python manage.py migrate        (Make the migration)
+                #python manage.py createsuperuser
 ]
 
 MIDDLEWARE = [

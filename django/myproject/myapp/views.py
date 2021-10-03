@@ -13,27 +13,7 @@ def index(request):
     #    'age': 24,
     #    'comment': 'Biutifull princess baby',
     #}
-    feature1 = Feature()
-    feature1.id=0
-    feature1.name='Lala Andrea'
-    feature1.details='Preciosa Princesa Bebe'
-
-    feature2 = Feature()
-    feature2.id=1
-    feature2.name='python'
-    feature2.details='Keep coding to keep learning'
-
-    feature3 = Feature()
-    feature3.id=2
-    feature3.name='React'
-    feature3.details='Watch OSRH videos'
-
-    feature4 = Feature()
-    feature4.id=3
-    feature4.name='Dont Starve'
-    feature4.details='Study'
-
-    features = [feature1, feature2, feature3, feature4]
+    features=Feature.objects.all() #From database (models.py) 
     return render(request, 'index.html', {'features': features})
     
 def something(request):
