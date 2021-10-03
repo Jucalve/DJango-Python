@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'style.css'%}">
+    </head>
+    <body>
+        <h1>Sing Up</h1>
+        {% for message in messages %}
+        <h5> {{message}} </h5>
+        {% endfor %}
+        <form method="POST" action="register">
+            {% csrf_token %}                    <!-- This line resolves CSRF error -->
+            <p>Username</p>
+            <input type="test" name="username"/>
+            <p>Email</p>
+            <input type="email" name="email"/>
+            <p>Password</p>
+            <input type="password" name="password"/>
+            <p>Repeat Password</p>
+            <input type="password" name="password2"/><br>
+            <input type="submit" />
+        </form>
+    </body>
+</html>

@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth.models import User, auth
+from django.contrib import messages
 from .models import Feature
 
 # Create your views here.
@@ -23,3 +25,27 @@ def something(request):
         'num_words' : len(aux.split()),
     }
     return render(request, 'something.html', context)
+
+def register(request):
+    if request.method == 'POST':
+        username=request.POST['username']
+        email=request.POST['email']
+        password=request.POST['password']
+        password2=request.POST['password2'] #We got the info. to make an user on the db
+
+        if password == password2:
+            if User.objects.filter(email=email).exists(): #checks if email is already used
+                messages.info(request, 'Email Already Used')
+                return redirect('register')
+            elif User.objects.filter(username=username).exists(): #chechs if usernale is already used
+                messages.info(request, 'Username Already Used')
+                return redirect('register')
+            else:                           #Creates the user
+                user = User.objects.create_user(username=username, email=email, password=password)
+                user.save()
+                return redirect('login')
+        else:
+            messages.info(request, 'Password not the same')
+            return redirect('register')
+
+    return render(request, 'register.html')
