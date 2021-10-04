@@ -17,14 +17,6 @@ def index(request):
     #}
     features=Feature.objects.all() #From database (models.py) 
     return render(request, 'index.html', {'features': features})
-    
-def something(request):
-    aux = request.POST['text']
-    context = {
-        'words' : aux,
-        'num_words' : len(aux.split()),
-    }
-    return render(request, 'something.html', context)
 
 def register(request):
     if request.method == 'POST':
@@ -49,3 +41,31 @@ def register(request):
             return redirect('register')
 
     return render(request, 'register.html')
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/')
+        else:
+            messages.info(request, 'Credentials invalid')
+            return redirect('login')
+    else:
+        return render(request, 'login.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
+#def something(request):
+#    aux = request.POST['text']
+#    context = {
+#        'words' : aux,
+#        'num_words' : len(aux.split()),
+#    }
+#    return render(request, 'something.html', context)
