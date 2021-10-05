@@ -2,24 +2,110 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'style.css'%}">
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>OnePage Bootstrap Template - Index</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+        <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+        <!-- =======================================================
+        * Template Name: OnePage - v4.5.0
+        * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
+        * Author: BootstrapMade.com
+        * License: https://bootstrapmade.com/license/
+        ======================================================== -->
     </head>
     <body>
-        <h1>Sing Up</h1>
-        {% for message in messages %}
-        <h5> {{message}} </h5>
-        {% endfor %}
-        <form method="POST" action="register">
-            {% csrf_token %}                    <!-- This line resolves CSRF error -->
-            <p>Username</p>
-            <input type="test" name="username"/>
-            <p>Email</p>
-            <input type="email" name="email"/>
-            <p>Password</p>
-            <input type="password" name="password"/>
-            <p>Repeat Password</p>
-            <input type="password" name="password2"/><br>
-            <input type="submit" />
-        </form>
+
+        <!-- ======= Header ======= -->
+        <header id="header" class="fixed-top">
+            <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 class="logo"><a href="index">LazyPage</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto" href="#about">About Me</a></li>
+                <!--  
+                <li><a class="nav-link scrollto" href="#services">Services</a></li>
+                <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>
+                <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                    <li><a href="#">Drop Down 1</a></li>
+                    <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                        <ul>
+                        <li><a href="#">Deep Drop Down 1</a></li>
+                        <li><a href="#">Deep Drop Down 2</a></li>
+                        <li><a href="#">Deep Drop Down 3</a></li>
+                        <li><a href="#">Deep Drop Down 4</a></li>
+                        <li><a href="#">Deep Drop Down 5</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Drop Down 2</a></li>
+                    <li><a href="#">Drop Down 3</a></li>
+                    <li><a href="#">Drop Down 4</a></li>
+                    </ul>  
+                </li>  
+                <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                -->
+                {% if user.is_authenticated %}
+                    <li><a class="getstarted scrollto" href="logout">LogOut</a></li>
+                {% else %}
+                    <li><a class="getstarted scrollto" href="login">LogIn or SingUp</a></li>
+                {% endif %}
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            </div>
+        </header><!-- End Header -->
+        <section id="hero" class="d-flex align-items-center">
+            <div class="container position-relative">
+                <h1>Sing Up</h1>
+                
+                <form method="POST" action="register">
+                    {% csrf_token %}                    <!-- This line resolves CSRF error -->
+                    <h2>Username</h2>
+                    <input type="test" name="username"/>
+                    <h2>Email</h2>
+                    <input type="email" name="email"/>
+                    <h2>Password</h2>
+                    <input type="password" name="password"/>
+                    <h2>Repeat Password</h2>
+                    <input type="password" name="password2"/><br>
+                    <div class="text-center">
+                        <input type="submit" class="btn-get-started"/>
+                    </div>
+                </form>
+                {% for message in messages %}
+                <h5> {{message}} </h5>
+                {% endfor %}
+            </div>
+        </section>
     </body>
 </html>

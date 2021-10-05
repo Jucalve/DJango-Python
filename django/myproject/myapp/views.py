@@ -18,6 +18,10 @@ def index(request):
     features=Feature.objects.all() #From database (models.py) 
     return render(request, 'index.html', {'features': features})
 
+def index2(request):
+    redirect('/')
+    
+
 def register(request):
     if request.method == 'POST':
         username=request.POST['username']
@@ -62,10 +66,20 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-#def something(request):
-#    aux = request.POST['text']
-#    context = {
-#        'words' : aux,
-#        'num_words' : len(aux.split()),
-#    }
-#    return render(request, 'something.html', context)
+def something(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        details = request.POST['details']
+        if len(name) == 0 and len(details) == 0:
+            messages.info(request, 'Write what you´re THINKING and give it a NAME')
+        elif len(name) == 0:
+            messages.info(request, 'Give your idea a NAME')
+        elif len(details) == 0:
+            messages.info(request, 'Tell me something')
+        else:
+            feature=Feature.objects.create(name=name, details=details)
+            feature.save()
+            return redirect('/')
+        
+    
+    return render(request, 'something.html')
